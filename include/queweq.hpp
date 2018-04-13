@@ -58,18 +58,17 @@ public:
 
 
 
-    void print() {
+    void print(std::ostream & stream) {
         node_t * ptr = head;
         if(ptr != nullptr) {
             while(ptr->next != nullptr) {
-                std::cout << ptr->value << "  ";
+                stream << ptr->value << "  ";
                 ptr = ptr->next;
             }
             if(trail != nullptr) {
-                std::cout << trail->value << "  ";
+                stream << trail->value << "  ";
             }
         }
-        std::cout << std::endl;
     }
 
     node_t * gethead() const
