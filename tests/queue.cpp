@@ -1,7 +1,7 @@
 #include <catch.hpp>
 #include <sstream>
 
-#include queweq.hpp"
+#include queue.hpp"
 
 TEST_CASE("creating")
 {
