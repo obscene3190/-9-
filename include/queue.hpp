@@ -21,7 +21,7 @@ public:
             push(ptr->value);
         }
     }
-    queue<T> & operator =(queue<T> const & other) {
+    void operator =(queue<T> const & other) {
         if(head != nullptr) {
             while (head) {
                 node_t * temp = head;
@@ -32,7 +32,6 @@ public:
         for (node_t * ptr = other.gethead(); ptr; ptr = ptr->next) {
             push(ptr->value);
         }
-
     }
     void push(T value) {
         node_t * node = new node_t;
