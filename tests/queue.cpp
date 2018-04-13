@@ -1,18 +1,32 @@
 #include <catch.hpp>
 #include <sstream>
 
-#include queue.hpp"
+#include "queue.hpp"
 
-TEST_CASE("creating")
+TEST_CASE("Creating")
 {
-	queue_t<int> queue;
+	queue<int> queue;
 	REQUIRE( queue.head() == nullptr );
 	REQUIRE( queue.tail() == nullptr );
 }
 
+TEST_CASE("Creating with copy")
+{
+	std::string result1{"1  2  3  "};
+	queue<int> queue2;
+	queue2.push(1);
+	queue2.push(2);
+	queue2.push(3);
+	queue<int> queue1(queue2);
+	std::ostringstream ostream;
+	queue1.print(ostream);
+	REQUIRE( ostream.str() == result );
+	
+}
+
 TEST_CASE("push pop")
 {
-	queue_t<int> queue;
+	queue<int> queue;
 	std::string result1{"6  5  4  "};
 	queue.push(6);
 	queue.push(5);
@@ -28,12 +42,12 @@ TEST_CASE("push pop")
 
 TEST_CASE("equals")
 {
-	queue_t<int> queue1;
+	queue<int> queue1;
 	std::string result1{"1  2  3  "};
 	queue1.push(6);
 	queue1.push(5);
 	queue1.push(4);
-	queue_t<int> queue2;
+	queue<int> queue2;
 	queue2.push(1);
 	queue2.push(2);
 	queue2.push(3);
@@ -41,6 +55,13 @@ TEST_CASE("equals")
 	queue1 = queue2;
 	queue1.print(ostream);
 	REQUIRE( ostream.str() == result );
+}
+
+TEST_CASE("Out of range")
+{
+	queue<int> queue;
+	REQUIRE_THROWS_AS( queue.pop() , std::out_of_range);
+	
 }
 
 
