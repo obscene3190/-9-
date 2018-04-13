@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(BUILD_TESTS "Build tests" OFF)
 option(BUILD_EXAMPLES "Build Examples" OFF)
 
-add_library(${PROJECT_NAME} "${PROJECT_SOURCE_DIR}/sources/queweq
+add_library(${PROJECT_NAME} "${PROJECT_SOURCE_DIR}/sources/queue
 .cpp")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 
