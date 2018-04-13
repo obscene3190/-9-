@@ -17,6 +17,8 @@ public:
         trail = nullptr; //конец
     }
     queue(queue<T> const & other) {
+        head = nullptr; 
+        trail = nullptr;
         for (node_t * ptr = other.gethead(); ptr; ptr = ptr->next) {
             push(ptr->value);
         }
