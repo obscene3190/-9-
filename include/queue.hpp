@@ -49,8 +49,8 @@ public:
         }
     }
     void pop() {
-        node_t * ptr = head->next;
         if (head != nullptr) {
+            node_t * ptr = head->next;
             delete head;
             head = ptr;
         }
