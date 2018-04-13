@@ -26,4 +26,21 @@ TEST_CASE("push pop")
 	REQUIRE( ostream1.str() == result1 );
 }
 
+TEST_CASE("equals")
+{
+	queue_t<int> queue1;
+	std::string result1{"1  2  3  "};
+	queue1.push(6);
+	queue1.push(5);
+	queue1.push(4);
+	queue_t<int> queue2;
+	queue2.push(1);
+	queue2.push(2);
+	queue2.push(3);
+	std::ostringstream ostream;
+	queue1 = queue2;
+	queue1.print(ostream);
+	REQUIRE( ostream.str() == result );
+}
+
 
