@@ -6,13 +6,13 @@
 TEST_CASE("Creating")
 {
 	queue<int> queue;
-	REQUIRE( queue.head() == nullptr );
-	REQUIRE( queue.tail() == nullptr );
+	REQUIRE( queue.gethead() == nullptr );
+	REQUIRE( queue.gettrail() == nullptr );
 }
 
 TEST_CASE("Creating with copy")
 {
-	std::string result1{"1  2  3  "};
+	std::string result{"1  2  3  "};
 	queue<int> queue2;
 	queue2.push(1);
 	queue2.push(2);
@@ -27,7 +27,7 @@ TEST_CASE("Creating with copy")
 TEST_CASE("push pop")
 {
 	queue<int> queue;
-	std::string result1{"6  5  4  "};
+	std::string result{"6  5  4  "};
 	queue.push(6);
 	queue.push(5);
 	queue.push(4);
@@ -43,7 +43,7 @@ TEST_CASE("push pop")
 TEST_CASE("equals")
 {
 	queue<int> queue1;
-	std::string result1{"1  2  3  "};
+	std::string result{"1  2  3  "};
 	queue1.push(6);
 	queue1.push(5);
 	queue1.push(4);
