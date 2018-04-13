@@ -17,9 +17,22 @@ public:
         trail = nullptr; //конец
     }
     queue(queue<T> const & other) {
-        for (auto it = other.gethead(); it; it = it->next) {
-            push(it->value);
+        for (node_t * ptr = other.gethead(); ptr; ptr = ptr->next) {
+            push(ptr->value);
         }
+    }
+    queue<T> & operator =(queue<T> const & other) {
+        if(head != nullptr) {
+            while (head) {
+                node_t * temp = head;
+                head = head->next;
+                delete temp;
+            }
+        }
+        for (node_t * ptr = other.gethead(); ptr; ptr = ptr->next) {
+            push(ptr->value);
+        }
+
     }
     void push(T value) {
         node_t * node = new node_t;
@@ -46,8 +59,8 @@ public:
 
 
     void print() {
-            node_t * ptr = head;
-            if(ptr != nullptr) {
+        node_t * ptr = head;
+        if(ptr != nullptr) {
             while(ptr->next != nullptr) {
                 std::cout << ptr->value << "  ";
                 ptr = ptr->next;
@@ -56,6 +69,7 @@ public:
                 std::cout << trail->value << "  ";
             }
         }
+        std::cout << std::endl;
     }
 
     node_t * gethead() const
