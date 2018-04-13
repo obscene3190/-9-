@@ -58,11 +58,11 @@ TEST_CASE("equals")
 	REQUIRE( ostream.str() == result );
 }
 
-/*TEST_CASE("Out of range")
+TEST_CASE("Out of range")
 {
 	queue<int> queue;
 	REQUIRE_THROWS_AS( queue.pop() , std::out_of_range);
 	
-} */
+}
 
 
