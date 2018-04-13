@@ -24,18 +24,29 @@ public:
             head = node;
             trail = node;
         }
-        else {
-            trail->next = node;
-            trail = node;
+        node_t * ptr = trail;
+        ptr->next = node;
+        trail = trail->next;
+
+    }
+    void pop() {
+        node_t * ptr = head->next;
+
+        if (head != nullptr) {
+            delete head;
+            head = ptr;
         }
     }
     void print() {
-            if(head != nullptr) {
-            while(head->next != nullptr) {
-                std::cout << head->value << "  ";
-                head = head->next;
+            node_t * ptr = head;
+            if(ptr != nullptr) {
+            while(ptr->next != nullptr) {
+                std::cout << ptr->value << "  ";
+                ptr = ptr->next;
             }
-            std::cout << trail->value << "  ";
+            if(trail != nullptr) {
+                std::cout << trail->value << "  ";
+            }
         }
     }
 
