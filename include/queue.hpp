@@ -23,13 +23,14 @@ public:
             push(ptr->value);
         }
     }
-    void operator =(queue<T> const & other) {
+    queue<T> & operator =(queue<T> const & other) {
         if(head != nullptr) {
             while (head) {
                 node_t * temp = head;
                 head = head->next;
                 delete temp;
             }
+            return *this;
         }
         for (node_t * ptr = other.gethead(); ptr; ptr = ptr->next) {
             push(ptr->value);
