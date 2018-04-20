@@ -30,11 +30,11 @@ public:
                 head = head->next;
                 delete temp;
             }
-            return *this;
         }
         for (node_t * ptr = other.gethead(); ptr; ptr = ptr->next) {
             push(ptr->value);
         }
+        return *this;
     }
     void push(T value) {
         node_t * node = new node_t;
