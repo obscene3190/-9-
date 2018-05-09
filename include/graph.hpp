@@ -57,12 +57,12 @@ public:
     }
   
   vector<bool> alreadycheckedroots;
-  void dfs(unsigned index) {
+  void dfs(unsigned index, std::ostream & stream ) {
 	for (unsigned i = 0; i < size; i++) {
 		alreadycheckedroots.push_back(false);
 	}
 	alreadycheckedroots[index] = true;
-	cout << index << " ";
+	stream << index << " ";
 	for (const auto& i : roots[index])
 	{
 		if (!alreadycheckedroots[i])
