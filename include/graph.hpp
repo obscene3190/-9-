@@ -8,21 +8,21 @@ template <typename T>
 class graph {
 private:
   vector<vector<T>> roots;
-  unsigned int sizeg;
+  unsigned int size;
   
 public:
   graph() {
-    sizeg = 0;
+    size = 0;
   }
   
   graph(graph<T> &other) {
     roots = other.returnroots();
-    sizeg = roots.size();
+    size = roots.size();
   }
   
   graph(vector<vector<T>> inputroots) {
     roots = inputroots;
-    sizeg = roots.size();
+    size = roots.size();
   }
   
   
@@ -32,16 +32,11 @@ public:
   }
   
   unsigned int returnsize() {
-    return sizeg;
-  }
-  
-  void set_vertices(unsigned int vertices) {
-    sizeg = vertices;
+    return size;
   }
   
   void print(std::ostream & stream) {
-    //if(roots) {
-      for( unsigned int i = 0; i  < sizeg; i++) {
+      for( unsigned int i = 0; i  < size; i++) {
         stream<<i<<": ";
         vector<T> help = roots[i];
         for(unsigned int j = 0; j<roots[i].size(); j++) {
@@ -50,41 +45,19 @@ public:
         stream<<endl;
       }
     }
-  //}
   
-  vector<bool> used;
-  vector<unsigned> result;
+  vector<bool> alreadycheckedroots;
   void dfs(unsigned index) {
-	for (unsigned i = 0; i < sizeg; i++) {
-		used.push_back(false);
+	for (unsigned i = 0; i < size; i++) {
+		alreadycheckedroots.push_back(false);
 	}
-	used[index] = true;
-	result.push_back(index);
+	alreadycheckedroots[index] = true;
+	cout << index << " ";
 	for (const auto& i : roots[index])
 	{
-		if (!used[i])
+		if (!alreadycheckedroots[i])
 			dfs(i);
+		}
 	}
-}
-  void printresult() {
-    for (unsigned i = 0; i < result.size(); i++) {
-		cout<<result[i]<<" ";
-	}         
-  }
-  ~graph() {};
-  
-/*	void read();
-	Graph operator = (Graph & other);
-	void dfs(unsigned index);
-	void input(vector < vector<unsigned> > & in); */
+  ~graph() {}
 };
-
-int main() {
-    graph<int> graph1({{ 1 },{ 2,6 },{4,5},{},{}});
-    //graph1.print(cout);
-    if(graph1.returnsize()) {
-    cout<<graph1.returnsize()<<" ";}
-    else cout<<"nothing";
-    graph1.dfs(0);
-    graph1.printresult();
-}
