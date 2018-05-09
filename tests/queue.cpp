@@ -5,7 +5,7 @@
 
 TEST_CASE("Creating")
 {
-	graph graph1;
+	graph<int> graph1;
 	REQUIRE(graph1.returnsize() == 0);
 }
 
