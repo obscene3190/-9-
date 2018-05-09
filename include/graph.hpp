@@ -8,21 +8,21 @@ template <typename T>
 class graph {
 private:
   vector<vector<T>> roots;
-  unsigned int size;
+  unsigned int sizeg;
   
 public:
   graph() {
-    size = 0;
+    sizeg = 0;
   }
   
   graph(graph<T> &other) {
     roots = other.returnroots();
-    size = roots.size();
+    sizeg = roots.size();
   }
   
   graph(vector<vector<T>> inputroots) {
     roots = inputroots;
-    size = roots.size();
+    sizeg = roots.size();
   }
   
   
@@ -31,14 +31,18 @@ public:
     return roots;
   }
   
+  unsigned int returnsize() {
+    return sizeg;
+  }
+  
   void set_vertices(unsigned int vertices) {
-    size = vertices;
+    sizeg = vertices;
   }
   
   void print(std::ostream & stream) {
     //if(roots) {
-      for( unsigned int i = 0; i  < size; i++) {
-        stream<<i+1<<": ";
+      for( unsigned int i = 0; i  < sizeg; i++) {
+        stream<<i<<": ";
         vector<T> help = roots[i];
         for(unsigned int j = 0; j<roots[i].size(); j++) {
           stream<<help[j]<<" ";
@@ -48,6 +52,25 @@ public:
     }
   //}
   
+  vector<bool> used;
+  vector<unsigned> result;
+  void dfs(unsigned index) {
+	for (unsigned i = 0; i < sizeg; i++) {
+		used.push_back(false);
+	}
+	used[index] = true;
+	result.push_back(index);
+	for (const auto& i : roots[index])
+	{
+		if (!used[i])
+			dfs(i);
+	}
+}
+  void printresult() {
+    for (unsigned i = 0; i < result.size(); i++) {
+		cout<<result[i]<<" ";
+	}         
+  }
   ~graph() {};
   
 /*	void read();
@@ -59,6 +82,9 @@ public:
 int main() {
     graph<int> graph1({{ 1 },{ 2,6 },{4,5},{},{}});
     //graph1.print(cout);
-    graph<int> graph12(graph1);
-    graph12.print(cout);
+    if(graph1.returnsize()) {
+    cout<<graph1.returnsize()<<" ";}
+    else cout<<"nothing";
+    graph1.dfs(0);
+    graph1.printresult();
 }
