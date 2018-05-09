@@ -17,7 +17,7 @@ TEST_CASE("Creating")
 	REQUIRE(ostream.str() = "0: 1 2 \n"
 				"1: 3 \n"
 				"2: 3 \n"
-				"3: \n";
+				"3: \n");
 }
 		
 TEST_CASE("DFS")
@@ -25,6 +25,6 @@ TEST_CASE("DFS")
 	graph<int> graph1({{1,2},{3},{3},{}});
 	std::ostringstream ostream;
 	graph1.dfs(0, ostream);
-	REQUIRE(ostream.str() = "0 1 3 2";
+	REQUIRE(ostream.str() = "0 1 3 2");
 }	
 
