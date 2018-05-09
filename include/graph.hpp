@@ -66,7 +66,7 @@ public:
 	for (const auto& i : roots[index])
 	{
 		if (!alreadycheckedroots[i])
-			dfs(i);
+			dfs(i,cout);
 		}
 	}
   ~graph() {}
