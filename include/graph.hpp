@@ -22,6 +22,14 @@ public:
   
   graph(vector<vector<T>> inputroots) {
     roots = inputroots;
+    for (unsigned i = 0; i < in.size(); i++) {
+	for (const auto& j : in[i]){
+		if (j >= in.size()) {
+			cout<<"Incorrect import";
+			return 0;
+		}
+	}
+    }
     size = roots.size();
   }
   
