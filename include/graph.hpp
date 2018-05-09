@@ -2,6 +2,8 @@
 #include<iostream>
 #include<string>
 #include<sstream>
+
+#include <stdexcept>
 using namespace std;
 
 template <typename T>
@@ -22,11 +24,11 @@ public:
   
   graph(vector<vector<T>> inputroots) {
     roots = inputroots;
-    for (unsigned i = 0; i < in.size(); i++) {
-	for (const auto& j : in[i]){
-		if (j >= in.size()) {
+    for (unsigned i = 0; i < inputroots.size(); i++) {
+	for (const auto& j : inputroots[i]){
+		if (j >= inputroots.size()) {
 			cout<<"Incorrect import";
-			return 0;
+			throw length_error("fail");
 		}
 	}
     }
