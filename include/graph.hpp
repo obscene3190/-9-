@@ -25,12 +25,12 @@ public:
   graph(vector<vector<T>> inputnodes) {
     nodes = inputnodes;
     for (unsigned i = 0; i < inputnodes.size(); i++) {
-	for (const auto& j : inputnodes[i]){
-		if (j >= inputnodes.size()) {
-			cout<<"Incorrect import";
-			throw length_error("No such root");
-		}
-	}
+	    for (const auto& j : inputnodes[i]){
+		    if (j >= inputnodes.size()) {
+			    cout<<"Incorrect import";
+			    throw length_error("No such node");
+		    }
+	    }
     }
     size = nodes.size();
   }
@@ -56,10 +56,27 @@ public:
       }
     }
   
+  void insert(vector<T> const & inputnodes) {
+	if (inputnodes.size() > size)
+	{
+		throw std::length_error("length error");
+		return;
+	}
+	for (unsigned i = 0; i < inputnodes.size(); i++) {
+		if (inputnodes[i] >= size) {
+			cout<<"Incorrect import";
+			throw length_error("No such node");
+		}
+	}
+
+    nodes.push_back(inputnodes);
+	size++;
+}
+
+
 	vector<bool> checkednodes;
 	vector<T> depth;
   void dfs(unsigned index) {
-	//неверно
 	for (unsigned i = 0; i < size; i++) {
 		checkednodes.push_back(false);
 	}
@@ -68,7 +85,7 @@ public:
 	for (const auto& i : nodes[index])
 	{
 		if (!checkednodes[i])
-			dfs(i); // dfs(i,cout)
+			dfs(i);
 		}
 	}
 	void printdepth(std::ostream & stream) {
