@@ -9,7 +9,7 @@ TEST_CASE("Creating")
 	REQUIRE(graph1.returnsize() == 0);
 }
 
-TEST_CASE("Creating")
+TEST_CASE("Creating_1")
 {
 	graph<int> graph1({{1,2},{3},{3},{}});
 	std::ostringstream ostream;
