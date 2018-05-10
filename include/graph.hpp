@@ -18,7 +18,7 @@ public:
   }
   
   graph(graph<T> &other) {
-    roots = other.returnnodes();
+    nodes = other.returnnodes();
     size = nodes.size();
   }
   
@@ -57,22 +57,23 @@ public:
     }
   
 	vector<bool> checkednodes;
-  void dfs(unsigned index, std::ostream & stream ) {
+	vector<T> depth;
+  void dfs(unsigned index) {
 	//неверно
 	for (unsigned i = 0; i < size; i++) {
 		checkednodes.push_back(false);
 	}
 	checkednodes[index] = true;
-	checkednodes.push_back(index);
+	depth.push_back(index);
 	for (const auto& i : nodes[index])
 	{
 		if (!checkednodes[i])
-			dfs(i,stream); // dfs(i,cout)
+			dfs(i); // dfs(i,cout)
 		}
 	}
 	void printdepth(std::ostream & stream) {
-		for(unsigned int i = 0; i<checkednodes.size(); i++) {
-			stream<<checkednodes[i]<<" ";
+		for(unsigned int i = 0; i<depth.size(); i++) {
+			stream<<depth[i]<<" ";
 		}
 	}
   ~graph() {
