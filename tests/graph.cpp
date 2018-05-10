@@ -42,3 +42,27 @@ TEST_CASE("Inserting")
 	       			"4: 1 2 3 \n");
 }
 
+TEST_CASE("Errors")
+{
+	bool result;
+	
+	try	{
+		graph graph12({{1},{2}});
+	}
+	catch(std::length_error)
+	{
+		result = true;
+		REQIRE(result);
+	}
+	result = false;
+	graph<int> graph1({{1},{}});
+	try	{
+		graph1.insert({0,5});
+	}
+	catch(std::length_error)
+	{
+		result = true;
+		REQIRE(result);
+	}
+	
+}
