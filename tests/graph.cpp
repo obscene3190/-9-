@@ -24,7 +24,8 @@ TEST_CASE("DFS")
 {
 	graph<int> graph1({{1,2},{3},{3},{}});
 	std::ostringstream ostream;
-	graph1.dfs(0, ostream);
+	graph1.dfs(0);
+	graph.printdepth(ostream);
 	REQUIRE(ostream.str() == "0 1 3 2 ");
 }
 
