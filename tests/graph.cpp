@@ -47,12 +47,12 @@ TEST_CASE("Errors")
 	bool result;
 	
 	try	{
-		graph graph12({{1},{2}});
+		graph<int> graph12({{1},{2}});
 	}
 	catch(std::length_error)
 	{
 		result = true;
-		REQIRE(result);
+		REQUIRE(result);
 	}
 	result = false;
 	graph<int> graph1({{1},{}});
@@ -62,7 +62,7 @@ TEST_CASE("Errors")
 	catch(std::length_error)
 	{
 		result = true;
-		REQIRE(result);
+		REQUIRE(result);
 	}
 	
 }
