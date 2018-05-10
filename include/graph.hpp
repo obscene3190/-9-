@@ -56,17 +56,22 @@ public:
       }
     }
   
-  vector<bool> alreadycheckedroots;
-  void dfs(unsigned index, std::ostream & stream ) {
+	vector<bool> alreadycheckedroots;
 	for (unsigned i = 0; i < size; i++) {
 		alreadycheckedroots.push_back(false);
 	}
+  void dfs(unsigned index, std::ostream & stream ) {
+	//неверно
+	//for (unsigned i = 0; i < size; i++) {
+	//	alreadycheckedroots.push_back(false);
+	//}
+	//неверно
 	alreadycheckedroots[index] = true;
 	stream << index << " ";
 	for (const auto& i : roots[index])
 	{
 		if (!alreadycheckedroots[i])
-			dfs(i,cout);
+			dfs(i,stream); // dfs(i,cout)
 		}
 	}
   ~graph() {}
