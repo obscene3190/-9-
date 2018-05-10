@@ -56,10 +56,7 @@ public:
       }
     }
   
-	vector<bool> alreadycheckedroots;
-	for (unsigned i = 0; i < size; i++) {
-		alreadycheckedroots.push_back(false);
-	}
+	vector<bool> alreadycheckedroots;	}
   void dfs(unsigned index, std::ostream & stream ) {
 	//неверно
 	//for (unsigned i = 0; i < size; i++) {
