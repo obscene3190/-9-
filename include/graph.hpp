@@ -17,12 +17,12 @@ public:
     size = 0;
   }
   
-  graph(graph<T> &other) {
+  graph(graph<T> const &other) {
     nodes = other.returnnodes();
     size = nodes.size();
   }
   
-  graph(vector<vector<T>> inputnodes) {
+  graph(vector<vector<T>> cosnt &inputnodes) {
     nodes = inputnodes;
     for (unsigned i = 0; i < inputnodes.size(); i++) {
 	    for (const auto& j : inputnodes[i]){
@@ -37,15 +37,15 @@ public:
   
   
   
-  vector<vector<T>> returnnodes() {
+  vector<vector<T>> returnnodes() const {
     return nodes;
   }
   
-  unsigned int returnsize() {
+  unsigned int returnsize() const {
     return size;
   }
   
-  void print(std::ostream & stream) {
+  void print(std::ostream & stream) const {
       for( unsigned int i = 0; i  < size; i++) {
         stream<<i<<": ";
         vector<T> help = nodes[i];
@@ -71,11 +71,11 @@ public:
 
     nodes.push_back(inputnodes);
 	size++;
-}
+  }
 
 
-	vector<bool> checkednodes;
-	vector<T> depth;
+  vector<bool> checkednodes;
+  vector<T> depth;
   void dfs(unsigned index) {
 	for (unsigned i = 0; i < size; i++) {
 		checkednodes.push_back(false);
