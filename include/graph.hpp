@@ -22,7 +22,7 @@ public:
     size = nodes.size();
   }
   
-  graph(cosnt vector<vector<T>> & inputnodes) {
+  graph(vector<vector<T>> const & inputnodes) {
     nodes = inputnodes;
     for (unsigned i = 0; i < inputnodes.size(); i++) {
 	    for (const auto& j : inputnodes[i]){
